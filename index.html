@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ishu, Will You Be My Wife?</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Pacifico', cursive;
+      background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      overflow-x: hidden;
+    }
+    @keyframes gradient {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+    h1 {
+      font-size: 2.5em;
+      margin: 30px 20px 20px;
+    }
+    .love-lines p {
+      font-size: 1.2em;
+      margin: 10px;
+    }
+    .buttons {
+      margin: 30px;
+    }
+    button {
+      font-size: 1.2em;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 10px;
+      background-color: #fff;
+      color: #ff69b4;
+      font-family: 'Pacifico', cursive;
+      transition: transform 0.3s ease;
+    }
+    button:hover {
+      transform: scale(1.1);
+    }
+    .glow {
+      animation: glow 1.5s ease-in-out infinite alternate;
+    }
+    @keyframes glow {
+      from { box-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4; }
+      to { box-shadow: 0 0 20px #ff1493, 0 0 40px #ff1493; }
+    }
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 2s ease-in forwards;
+    }
+    .fade-in:nth-child(1) { animation-delay: 0.5s; }
+    .fade-in:nth-child(2) { animation-delay: 1s; }
+    .fade-in:nth-child(3) { animation-delay: 1.5s; }
+    .fade-in:nth-child(4) { animation-delay: 2s; }
+    .fade-in:nth-child(5) { animation-delay: 2.5s; }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+    #yesMessage, #followUp {
+      display: none;
+      margin-top: 20px;
+      font-size: 1.3em;
+    }
+    #futureSection {
+      display: none;
+      margin-top: 40px;
+      font-size: 1.3em;
+      max-width: 90%;
+      animation: fadeIn 2s ease-in;
+    }
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: pink;
+      transform: rotate(45deg);
+      animation: floatUp 5s linear infinite;
+    }
+    .heart::before, .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: pink;
+      border-radius: 50%;
+    }
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(45deg); opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(45deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="title">Ishu, Will You Be My Wife? 💍</h1>
+
+  <div class="love-lines">
+    <p class="fade-in">Ishu, you make my heart smile every day 💓</p>
+    <p class="fade-in">With you, everything feels magical ✨</p>
+    <p class="fade-in">You're the dream I never want to wake up from 🌙</p>
+    <p class="fade-in">Our story could be the sweetest fairytale ever 🏰</p>
+    <p class="fade-in">Say yes, and let’s start our forever, Yash & Ishu 💑</p>
+  </div>
+
+  <div class="buttons">
+    <button id="yesBtn" class="glow">Yes 💕</button>
+    <button id="noBtn">No 💔</button>
+  </div>
+
+  <div id="yesMessage">
+    💘 Yay! You said YES, Ishu! Yash is the happiest man in the universe! 👰‍♀️🤵‍♂️
+    <div id="followUp">
+      <p id="followUpText">Are you ready to become Mrs. Yash? 💖</p>
+      <button id="nextBtn">Next ❤️</button>
+    </div>
+  </div>
+
+  <div id="futureSection">
+    <h2>Yash & Ishu’s Married Life 💑</h2>
+    <p>👩‍❤️‍👨 Candle-lit dinners and long walks under the stars</p>
+    <p>🏠 A cozy home full of laughter, hugs, and memories</p>
+    <p>🌍 Traveling the world hand in hand</p>
+    <p>👶 One day… a little version of us running around 🍼</p>
+    <p>💍 Through thick and thin, husband and wife forever.</p>
+  </div>
+
+  <script>
+    const title = document.getElementById('title');
+    let titleText = title.innerText;
+    title.innerText = '';
+    let index = 0;
+    setInterval(() => {
+      if (index < titleText.length) {
+        title.innerText += titleText[index++];
+      }
+    }, 80);
+
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }, 500);
+
+    const noBtn = document.getElementById('noBtn');
+    let noCounter = 0;
+    const noReplies = [
+      "Are you sure, Ishu? 🥺",
+      "Please don't say no 😢",
+      "One last chance? 💖",
+      "Think again? 😞",
+      "Don't break Yash’s heart 💔",
+      "You know you want to say yes 😘",
+      "Yash will be waiting forever... 🥺"
+    ];
+    noBtn.addEventListener('mouseenter', () => {
+      noBtn.style.position = 'absolute';
+      noBtn.style.left = Math.random() * 80 + 'vw';
+      noBtn.style.top = Math.random() * 80 + 'vh';
+      if (noCounter < noReplies.length) {
+        noBtn.innerText = noReplies[noCounter++];
+      } else {
+        noBtn.innerText = "Still hoping, Ishu 💔";
+      }
+    });
+
+    const yesBtn = document.getElementById('yesBtn');
+    const yesMessage = document.getElementById('yesMessage');
+    const followUp = document.getElementById('followUp');
+    const followUpText = document.getElementById('followUpText');
+    const nextBtn = document.getElementById('nextBtn');
+    const futureSection = document.getElementById('futureSection');
+
+    yesBtn.addEventListener('click', () => {
+      yesMessage.style.display = 'block';
+      document.querySelector('.buttons').style.display = 'none';
+
+      for (let i = 0; i < 15; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.top = '100vh';
+        heart.style.animationDuration = (Math.random() * 2 + 2) + 's';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 4000);
+      }
+
+      for (let i = 0; i < 30; i++) {
+        const confetti = document.createElement('div');
+        confetti.style.position = 'absolute';
+        confetti.style.width = '10px';
+        confetti.style.height = '10px';
+        confetti.style.borderRadius = '50%';
+        confetti.style.background = `hsl(${Math.random() * 360}, 100%, 70%)`;
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.top = '100vh';
+        confetti.style.animation = `floatUp ${Math.random() * 2 + 2}s ease-out forwards`;
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 4000);
+      }
+
+      setTimeout(() => {
+        followUp.style.display = 'block';
+      }, 1500);
+    });
+
+    const followUps = [
+      "Ishu, our married life will be magical 💞",
+      "No matter what, Yash and Ishu will stand together 💪",
+      "I'll always cherish you as my wife ❤️",
+      "You're the queen of my heart forever 👑",
+      "Let's build our dream life, Mrs. Yash 💕"
+    ];
+    let followCount = 0;
+
+    nextBtn.addEventListener('click', () => {
+      if (followCount < followUps.length) {
+        followUpText.textContent = followUps[followCount++];
+      } else {
+        followUpText.textContent = "Let’s start our happily ever after 💑✨";
+        nextBtn.style.display = 'none';
+        futureSection.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
